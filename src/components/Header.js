@@ -113,11 +113,8 @@ class Header extends Component {
       <header>
         <div className="container">
           <div className="brand">
-            <img
-              className="logo"
-              src="https://res.cloudinary.com/sivadass/image/upload/v1493547373/dummy-logo/Veggy.png"
-              alt="Veggy Brand Logo"
-            />
+            {/* need to change with concern association logo */}
+          <i class="fas fa-store fa-4x"></i>
           </div>
 
           <div className="search">
@@ -126,10 +123,7 @@ class Header extends Component {
               href="#"
               onClick={this.handleMobileSearch.bind(this)}
             >
-              <img
-                src="https://res.cloudinary.com/sivadass/image/upload/v1494756966/icons/search-green.png"
-                alt="search"
-              />
+              <i class="fas fa-search"></i>
             </a>
             <form
               action="#"
@@ -143,10 +137,7 @@ class Header extends Component {
                 href="#"
                 onClick={this.handleSearchNav.bind(this)}
               >
-                <img
-                  src="https://res.cloudinary.com/sivadass/image/upload/v1494756030/icons/back.png"
-                  alt="back"
-                />
+                <i class="fas fa-long-arrow-alt-left fa-2x"></i>
               </a>
               <input
                 type="search"
@@ -190,11 +181,7 @@ class Header extends Component {
               onClick={this.handleCart.bind(this)}
               ref="cartButton"
             >
-              <img
-                className={this.props.cartBounce ? "tada" : " "}
-                src="https://res.cloudinary.com/sivadass/image/upload/v1493548928/icons/bag.png"
-                alt="Cart"
-              />
+              <i class="fas fa-cart-arrow-down fa-2x"></i>
               {this.props.totalItems ? (
                 <span className="cart-count">{this.props.totalItems}</span>
               ) : (
