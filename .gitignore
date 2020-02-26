@@ -1,0 +1,16 @@
+# Stylesheets
+.sass-cache/
+*.css.map
+
+# history
+.history
+.vscode
+
+# Node Modules
+node_modules/
+
+# JS Mapping files
+*.js.map
+
+# Misc
+.DS_Store
