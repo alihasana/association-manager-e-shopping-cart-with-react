@@ -15,11 +15,11 @@ body {
   box-sizing: border-box;
 }
 ::selection {
-  background: $primary-green;
+  background: $primary-blue;
   color: $white;
 }
 ::-moz-selection {
-  background: $primary-green;
+  background: $primary-blue;
   color: $white;
   text-shadow: none;
 }
@@ -63,7 +63,7 @@ button {
   border-radius: 2px;
   text-align: center;
   color: $white;
-  background: $primary-green;
+  background: $primary-blue;
   border: 0;
   font-weight: 400;
   padding: 0 16px;
@@ -71,13 +71,13 @@ button {
   font-size: inherit;
   cursor: pointer;
   &:hover {
-    background: lighten($primary-green, 10%);
+    background: lighten($primary-blue, 10%);
   }
   &:focus {
     outline: none;
   }
   &:active {
-    background: lighten($primary-green, 15%);
+    background: lighten($primary-blue, 15%);
   }
 }
 
