@@ -100,3 +100,22 @@
     }
   }
 }
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-size: 100%, 100%;
+  border-radius: 50%;
+  border: 1px solid black;
+  background-color: #000 !important;
+}
+
+
+.carousel-indicators {
+  li {
+    background-color:  #000 !important;
+  }
+  .active {
+    background-color: $primary-blue !important;
+  }
+  
+
+} 
