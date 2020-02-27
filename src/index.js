@@ -180,8 +180,7 @@ class App extends Component {
           modalActive={this.state.modalActive}
           closeModal={this.closeModal}
           addToCart={this.handleAddToCart}
-          productQuantity={this.state.quantity}
-          updateQuantity={this.updateQuantity}
+          productQuantity={this.state.quantity} 
         />
       </div> 
     );
