@@ -46,7 +46,7 @@ class App extends Component {
       });
     });
   }
-  UNSAFE_componentWillMount() {
+  componentWillMount() {
     this.getProducts();
   }
 

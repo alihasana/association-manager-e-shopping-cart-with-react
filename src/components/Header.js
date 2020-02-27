@@ -53,14 +53,14 @@ class Header extends Component {
       }
     }
   }
-  UNSAFE_componentDidMount() {
+  componentDidMount() {
     document.addEventListener(
       "click",
       this.handleClickOutside.bind(this),
       true
     );
   }
-  UNSAFE_componentWillUnmount() {
+  componentWillUnmount() {
     document.removeEventListener(
       "click",
       this.handleClickOutside.bind(this),
@@ -114,7 +114,7 @@ class Header extends Component {
         <div className="container">
           <div className="brand">
             {/* need to change with concern association logo */}
-          <i class="fas fa-store fa-4x"></i>
+            <i class="fas fa-store fa-4x"></i>
           </div>
 
           <div className="search">
