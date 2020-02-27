@@ -1,43 +1,16 @@
 import React, { Component } from "react";
 import Counter from "./Counter";
+import ButtonAddToCart from "./General/ButtonAddToCart";
 import {Button} from "react-bootstrap";
 
 class Product extends Component {
- state = {
-      selectedProduct: {},
-      quickViewProduct: {},
-      isAdded: false
+  constructor(props) {
+    super(props);
+    this.state = {
+      quickViewProduct: {}
     };
-  addToCart(image, name, price, id, quantity) {
-    this.setState(
-      {
-        selectedProduct: {
-          image: image,
-          name: name,
-          price: price,
-          id: id,
-          quantity: quantity
-        }
-      },
-      function() {
-        this.props.addToCart(this.state.selectedProduct);
-      }
-      
-    );
-    this.setState(
-      {
-        isAdded: true
-      },
-      function() {
-        setTimeout(() => {
-          this.setState({
-            isAdded: false,
-            selectedProduct: {}
-          });
-        }, 3500);
-      }
-    );
   }
+  
   quickView(image, name, price, id) {
     this.setState(
       {
@@ -83,20 +56,14 @@ class Product extends Component {
           resetQuantity={this.resetQuantity}
         />
         <div className="product-action">
-          <Button
-            className={!this.state.isAdded ? "" : "added"}
-            type="button"
-            onClick={this.addToCart.bind(
-              this,
-              image,
-              name,
-              price,
-              id,
-              quantity
-            )}
-          >
-            {!this.state.isAdded ? "ADD TO CART" : "✔ ADDED"}
-          </Button>
+          <ButtonAddToCart
+            addToCart={this.props.addToCart}
+            image={image}
+            name={name}
+            price={price}
+            id={id}
+            productQuantity={quantity}
+          />
         </div>
       </div>
     );

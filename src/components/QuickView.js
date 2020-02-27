@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import { Modal, Button, Carousel } from "react-bootstrap";
 
 class QuickView extends Component {
+  constructor() {
+    super();
+  }
+
+  
   render() {
     return (
       <Modal

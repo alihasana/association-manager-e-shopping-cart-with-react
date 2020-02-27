@@ -68,7 +68,6 @@ class App extends Component {
     let productID = selectedProducts.id;
     let productQty = selectedProducts.quantity;
     if (this.checkProduct(productID)) {
-      console.log("hi");
       let index = cartItem.findIndex(x => x.id == productID);
       cartItem[index].quantity =
         Number(cartItem[index].quantity) + Number(productQty);
@@ -180,6 +179,9 @@ class App extends Component {
           product={this.state.quickViewProduct}
           modalActive={this.state.modalActive}
           closeModal={this.closeModal}
+          addToCart={this.handleAddToCart}
+          productQuantity={this.state.quantity}
+          updateQuantity={this.updateQuantity}
         />
       </div> 
     );
