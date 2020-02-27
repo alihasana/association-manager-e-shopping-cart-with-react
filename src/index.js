@@ -6,6 +6,8 @@ import Products from "./components/Products";
 import Footer from "./components/Footer";
 import QuickView from "./components/QuickView";
 import "./scss/style.scss";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Modal, Button } from "react-bootstrap";
 
 class App extends Component {
   constructor() {
@@ -44,7 +46,7 @@ class App extends Component {
       });
     });
   }
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.getProducts();
   }
 
@@ -59,7 +61,6 @@ class App extends Component {
   // Filter by Category
   handleCategory(event) {
     this.setState({ category: event.target.value });
-    console.log(this.state.category);
   }
   // Add to Cart
   handleAddToCart(selectedProducts) {
@@ -87,8 +88,6 @@ class App extends Component {
           cartBounce: false,
           quantity: 1
         });
-        console.log(this.state.quantity);
-        console.log(this.state.cart);
       }.bind(this),
       1000
     );
@@ -153,7 +152,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.quickViewProduct);
     return (
       <div className="container">
         <Header
@@ -180,10 +178,10 @@ class App extends Component {
         <Footer />
         <QuickView
           product={this.state.quickViewProduct}
-          openModal={this.state.modalActive}
+          modalActive={this.state.modalActive}
           closeModal={this.closeModal}
         />
-      </div>
+      </div> 
     );
   }
 }

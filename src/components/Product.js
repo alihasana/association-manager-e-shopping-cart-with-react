@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Counter from "./Counter";
+import {Button} from "react-bootstrap";
 
 class Product extends Component {
   constructor(props) {
@@ -54,7 +55,6 @@ class Product extends Component {
         this.props.openModal(this.state.quickViewProduct);
       }
     );
-    console.log(this.state.quickViewProduct)
   }
   render() {
     let image = this.props.image;
@@ -86,7 +86,7 @@ class Product extends Component {
           resetQuantity={this.resetQuantity}
         />
         <div className="product-action">
-          <button
+          <Button
             className={!this.state.isAdded ? "" : "added"}
             type="button"
             onClick={this.addToCart.bind(
@@ -99,7 +99,7 @@ class Product extends Component {
             )}
           >
             {!this.state.isAdded ? "ADD TO CART" : "✔ ADDED"}
-          </button>
+          </Button>
         </div>
       </div>
     );
