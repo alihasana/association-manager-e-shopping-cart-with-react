@@ -6,10 +6,10 @@ class CartScrollBar extends Component {
     super(props);
     this.handleScroll = this.handleScroll.bind(this);
   }
-  componentDidMount() {
+  UNSAFE_componentDidMount() {
     window.addEventListener("scroll", this.handleScroll);
   }
-  componentWillUnmount() {
+  UNSAFE_componentWillUnmount() {
     window.removeEventListener("scroll", this.handleScroll);
   }
   handleScroll(event) {

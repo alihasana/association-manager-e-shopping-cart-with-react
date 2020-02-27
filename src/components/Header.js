@@ -53,14 +53,14 @@ class Header extends Component {
       }
     }
   }
-  componentDidMount() {
+  UNSAFE_componentDidMount() {
     document.addEventListener(
       "click",
       this.handleClickOutside.bind(this),
       true
     );
   }
-  componentWillUnmount() {
+  UNSAFE_componentWillUnmount() {
     document.removeEventListener(
       "click",
       this.handleClickOutside.bind(this),

@@ -3,14 +3,11 @@ import Counter from "./Counter";
 import {Button} from "react-bootstrap";
 
 class Product extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+ state = {
       selectedProduct: {},
       quickViewProduct: {},
       isAdded: false
     };
-  }
   addToCart(image, name, price, id, quantity) {
     this.setState(
       {
