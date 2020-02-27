@@ -16,13 +16,6 @@ class QuickView extends Component {
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {/* <div>
-            <img src={this.props.product.image} alt={this.props.product.name} />
-            <div className="quick-view-details">
-              <span className="product-name">{this.props.product.name}</span>
-              <span className="product-price">{this.props.product.price}</span>
-            </div>
-          </div> */}
           <Carousel>
             <Carousel.Item>
               <img src={this.props.product.image} alt={this.props.product.name} />
