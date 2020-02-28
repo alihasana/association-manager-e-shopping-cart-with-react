@@ -5,6 +5,7 @@
 # history
 .history
 .vscode
+.idea
 
 # Node Modules
 node_modules/

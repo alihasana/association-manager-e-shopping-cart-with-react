@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 
-const EmptyCart = props => {
+const EmptyCart = () => {
   return (
     <div className="empty-cart">
-      <i class="fas fa-shopping-cart fa-7x"></i>
+      <i className="fas fa-shopping-cart fa-7x"/>
      {/*  <h2>You cart is empty!</h2> */}
       <h2>Votre panier est vide!</h2>
     </div>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Modal, Button, Carousel } from "react-bootstrap";
-import ButtonAddToCart from './General/ButtonAddToCart';
+import ButtonAddToCart from '../General/ButtonAddToCart';
 
 class QuickView extends Component {
   constructor() {
@@ -32,7 +32,7 @@ class QuickView extends Component {
               <img src={this.props.product.image} alt={this.props.product.name} />
             </Carousel.Item>
             <Carousel.Item>
-              <img src={this.props.product.image} alt={this.props.product.name} />    
+              <img src={this.props.product.image} alt={this.props.product.name} />
             </Carousel.Item>
             <Carousel.Item>
               <img src={this.props.product.image} alt={this.props.product.name} />

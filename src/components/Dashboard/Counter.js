@@ -37,7 +37,7 @@ class Counter extends Component {
     }
   }
 
-  feed(e) {
+  feed() {
     this.setState(
       {
         value: this.refs.feedQty.value

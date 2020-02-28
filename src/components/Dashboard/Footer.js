@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 
-const Footer = props => {
+const Footer = () => {
   return (
     <footer>
     </footer>

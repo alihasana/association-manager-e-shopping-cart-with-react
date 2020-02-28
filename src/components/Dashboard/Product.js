@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Counter from "./Counter";
-import ButtonAddToCart from "./General/ButtonAddToCart";
-import {Button} from "react-bootstrap";
+import ButtonAddToCart from "../General/ButtonAddToCart";
 
 class Product extends Component {
   constructor(props) {
@@ -10,7 +9,7 @@ class Product extends Component {
       quickViewProduct: {}
     };
   }
-  
+
   quickView(image, name, price, id) {
     this.setState(
       {
