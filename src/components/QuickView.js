@@ -44,13 +44,6 @@ class QuickView extends Component {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={this.props.closeModal}>
-            Close
-          </Button>
-          {/* <Button variant="primary" >
-            Save Changes
-          </Button> */}
-
           <ButtonAddToCart
             onClick={this.props.closeModal}
             addToCart={this.props.addToCart}
@@ -60,6 +53,9 @@ class QuickView extends Component {
             id={id}
             productQuantity={quantity}
           />
+          <Button variant="secondary" onClick={this.props.closeModal}>
+            Close
+          </Button>
         </Modal.Footer>
       </Modal>
     );
