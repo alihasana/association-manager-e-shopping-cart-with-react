@@ -3,19 +3,23 @@ import { Modal, Button, Carousel } from "react-bootstrap";
 import ButtonAddToCart from '../General/ButtonAddToCart';
 
 class QuickView extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
+
   render() {
-    let image = this.props.product.image;
-    let name = this.props.product.name;
-    let price = this.props.product.price;
-    let id = this.props.product.id;
-    let quantity = this.props.productQuantity;
+    let image = this.props.product.image,
+        name = this.props.product.name,
+        price = this.props.product.price,
+        id = this.props.product.id,
+        quantity = this.props.productQuantity,
+        show = this.props.modalActive,
+        hide = this.props.closeModal,
+        addToCart = this.props.addToCart;
     return (
       <Modal
-        show={this.props.modalActive}
-        onHide={this.props.closeModal}
+        show={show}
+        onHide={hide}
         animation={true}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
@@ -27,30 +31,30 @@ class QuickView extends Component {
         <Modal.Body>
           <Carousel>
             <Carousel.Item>
-              <img src={this.props.product.image} alt={this.props.product.name} />
+              <img src={image} alt={name} />
             </Carousel.Item>
             <Carousel.Item>
-              <img src={this.props.product.image} alt={this.props.product.name} />
+              <img src={image} alt={name} />
             </Carousel.Item>
             <Carousel.Item>
-              <img src={this.props.product.image} alt={this.props.product.name} />
+              <img src={image} alt={name} />
             </Carousel.Item>
           </Carousel>
           <div className="quick-view-details">
-              <span className="product-name">{this.props.product.name}</span>
-              <span className="product-price">{this.props.product.price}</span>
+              <span className="product-name">{name}</span>
+              <span className="product-price">{price}</span>
           </div>
         </Modal.Body>
         <Modal.Footer>
           <ButtonAddToCart
-            addToCart={this.props.addToCart}
+            addToCart={addToCart}
             image={image}
             name={name}
             price={price}
             id={id}
             productQuantity={quantity}
           />
-          <Button variant="secondary" onClick={this.props.closeModal}>
+          <Button variant="secondary" onClick={hide}>
             Close
           </Button>
         </Modal.Footer>

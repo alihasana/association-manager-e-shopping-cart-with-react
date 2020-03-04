@@ -2,12 +2,17 @@ import React, {Component} from "react";
 import {Button} from "react-bootstrap";
 
 class ButtonAddToCart extends Component {
+    _isMounted = false;
     constructor(props) {
         super(props);
         this.state = {
             selectedProduct: {},
             isAdded: false
         };
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     addToCart(image, name, price, id, quantity) {
@@ -41,16 +46,20 @@ class ButtonAddToCart extends Component {
                 }
             }
         );
+        this._isMounted = true;
         this.setState(
             {
                 isAdded: true
             },
             function () {
+                let data= this;
                 setTimeout(() => {
-                    this.setState({
-                        isAdded: false,
-                        selectedProduct: {}
-                    });
+                    if(data._isMounted) {
+                        this.setState({
+                            isAdded: false,
+                            selectedProduct: {}
+                        });
+                    }
                 }, 3500);
             }
         );
@@ -63,18 +72,19 @@ class ButtonAddToCart extends Component {
     }
 
     render() {
-        let image = this.props.image;
-        let name = this.props.name;
-        let price = this.props.price;
-        let id = this.props.id;
-        let quantity = this.props.productQuantity;
+        let data = this,
+            image = data.props.image,
+            name = data.props.name,
+            price = data.props.price,
+            id = data.props.id,
+            quantity = data.props.productQuantity;
         return (
             <Button
-                className={!this.state.isAdded ? "" : "added"}
+                className={!data.state.isAdded ? "" : "added"}
                 type="button"
-                onClick={this.addToCart.bind(this, image, name, price, id, quantity)}
+                onClick={data.addToCart.bind(data, image, name, price, id, quantity)}
             >
-                {!this.state.isAdded ? "ADD TO CART" : "✔ ADDED"}
+                {!data.state.isAdded ? "ADD TO CART" : "✔ ADDED"}
             </Button>
         );
     }
