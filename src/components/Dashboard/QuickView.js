@@ -6,8 +6,6 @@ class QuickView extends Component {
   constructor() {
     super();
   }
-
-
   render() {
     let image = this.props.product.image;
     let name = this.props.product.name;
@@ -45,7 +43,6 @@ class QuickView extends Component {
         </Modal.Body>
         <Modal.Footer>
           <ButtonAddToCart
-            onClick={this.props.closeModal}
             addToCart={this.props.addToCart}
             image={image}
             name={name}
