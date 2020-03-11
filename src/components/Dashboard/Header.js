@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import CartScrollBar from "./CartScrollBar";
-import Counter from "./Counter";
-import EmptyCart from "../empty-states/EmptyCart";
+import EmptyCart from "../../empty-states/EmptyCart";
 import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
 import { findDOMNode } from "react-dom";
 
@@ -20,7 +19,7 @@ class Header extends Component {
       showCart: !this.state.showCart
     });
   }
-  handleSubmit(e) {
+  static handleSubmit(e) {
     e.preventDefault();
   }
   handleMobileSearch(e) {
@@ -43,7 +42,6 @@ class Header extends Component {
   }
   handleClickOutside(event) {
     const cartNode = findDOMNode(this.refs.cartPreview);
-    const buttonNode = findDOMNode(this.refs.cartButton);
     if (cartNode.classList.contains("active")) {
       if (!cartNode || !cartNode.contains(event.target)) {
         this.setState({
@@ -72,7 +70,7 @@ class Header extends Component {
     cartItems = this.state.cart.map(product => {
       return (
         <li className="cart-item" key={product.name}>
-          <img className="product-image" src={product.image} />
+          <img alt='product image' className="product-image" src={product.image} />
           <div className="product-info">
             <p className="product-name">{product.name}</p>
             <p className="product-price">{product.price}</p>
@@ -114,7 +112,7 @@ class Header extends Component {
         <div className="container">
           <div className="brand">
             {/* need to change with concern association logo */}
-            <i class="fas fa-store fa-4x"></i>
+            <i className="fas fa-store fa-4x"/>
           </div>
 
           <div className="search">
@@ -123,7 +121,7 @@ class Header extends Component {
               href="#"
               onClick={this.handleMobileSearch.bind(this)}
             >
-              <i class="fas fa-search"></i>
+              <i className="fas fa-search"/>
             </a>
             <form
               action="#"
@@ -137,7 +135,7 @@ class Header extends Component {
                 href="#"
                 onClick={this.handleSearchNav.bind(this)}
               >
-                <i class="fas fa-long-arrow-alt-left fa-2x"></i>
+                <i className="fas fa-long-arrow-alt-left fa-2x"/>
               </a>
               <input
                 type="search"
@@ -149,7 +147,7 @@ class Header extends Component {
               <button
                 className="search-button"
                 type="submit"
-                onClick={this.handleSubmit.bind(this)}
+                onClick={Header.handleSubmit.bind(this)}
               />
             </form>
           </div>
@@ -181,7 +179,7 @@ class Header extends Component {
               onClick={this.handleCart.bind(this)}
               ref="cartButton"
             >
-              <i class="fas fa-cart-arrow-down fa-2x"></i>
+              <i className="fas fa-cart-arrow-down fa-2x"/>
               {this.props.totalItems ? (
                 <span className="cart-count">{this.props.totalItems}</span>
               ) : (
