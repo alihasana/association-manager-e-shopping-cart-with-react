@@ -3,6 +3,16 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require("webpack");
 const devMode = process.env.NODE_ENV !== "production";
+const dotEnv = require('dotenv');
+
+// call dotEnv and it will return an Object with a parsed key
+const env = dotEnv.config().parsed;
+
+// reduce it to a nice object, the same as before
+const envKeys = Object.keys(env).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(env[next]);
+  return prev;
+}, {});
 
 module.exports = {
   entry: ["babel-polyfill", "./src/index"],
@@ -51,6 +61,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: devMode ? "[name].css" : "[name].[hash].css",
       chunkFilename: devMode ? "[id].css" : "[id].[hash].css"
-    })
+    }),
+    new webpack.DefinePlugin(envKeys)
   ]
 };
