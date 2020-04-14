@@ -29,6 +29,7 @@
     "react-custom-scrollbars": "^4.1.1",
     "react-dom": "^16.0.0",
     "react-router-dom": "^5.1.2",
+    "react-stripe-checkout": "^2.6.3",
     "react-transition-group": "^1"
   },
   "devDependencies": {
