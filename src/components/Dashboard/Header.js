@@ -3,6 +3,7 @@ import CartScrollBar from "./CartScrollBar";
 import EmptyCart from "../../empty-states/EmptyCart";
 import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
 import { findDOMNode } from "react-dom";
+import StripeCheckout from 'react-stripe-checkout';
 
 class Header extends Component {
   constructor(props) {
@@ -65,6 +66,16 @@ class Header extends Component {
       true
     );
   }
+
+  onToken = (token, addresses) => {
+    console.log(token);
+    console.log(addresses);
+    // TODO: Send the token information and any other
+    // relevant information to your payment process
+    // server, wait for the response, and update the UI
+    // accordingly. How this is done is up to you. Using
+    // XHR, fetch, or a GraphQL mutation is typical.
+  };
   render() {
     let cartItems;
     cartItems = this.state.cart.map(product => {
@@ -194,12 +205,28 @@ class Header extends Component {
             >
               <CartScrollBar>{view}</CartScrollBar>
               <div className="action-block">
-                <button
+                {/*<button
                   type="button"
                   className={this.state.cart.length > 0 ? " " : "disabled"}
                 >
                   PROCEED TO CHECKOUT
-                </button>
+                </button>*/}
+
+                <StripeCheckout
+                    stripeKey={process.env.PUBLISHABLE_KEY}
+                    token={this.onToken}
+                    amount='5000'
+                    currency="EUR"
+                    billingAddress
+                    shippingAddress
+                    description="Shopping list"
+                    image=""
+                    locale="auto"
+                    name=""
+                    zipCode
+                    label="Pay with 💳"
+                    panelLabel="Pay now"
+                />
               </div>
             </div>
           </div>
