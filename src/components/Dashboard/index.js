@@ -33,6 +33,7 @@ class Dashboard extends Component {
         this.handleRemoveProduct = this.handleRemoveProduct.bind(this);
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
+        this.clearTotal = this.clearTotal.bind(this);
     }
     // Fetch Initial Set of Products from external API
     getProducts() {
@@ -157,6 +158,13 @@ class Dashboard extends Component {
             modalActive: false
         });
     }
+    // Clear No. of item and total
+    clearTotal() {
+        this.setState( {
+            totalItems: 0,
+            totalAmount: 0
+        })
+    }
 
     render() {
         return (
@@ -166,6 +174,7 @@ class Dashboard extends Component {
                     total={this.state.totalAmount}
                     totalItems={this.state.totalItems}
                     cartItems={this.state.cart}
+                    clearTotal={this.clearTotal}
                     removeProduct={this.handleRemoveProduct}
                     handleSearch={this.handleSearch}
                     handleMobileSearch={this.handleMobileSearch}

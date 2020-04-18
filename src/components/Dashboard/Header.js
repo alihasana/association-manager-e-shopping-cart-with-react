@@ -11,7 +11,7 @@ class Header extends Component {
     this.state = {
       showCart: false,
       cart: this.props.cartItems,
-      mobileSearch: false
+      mobileSearch: false,
     };
   }
   handleCart(e) {
@@ -70,6 +70,13 @@ class Header extends Component {
   onToken = (token, addresses) => {
     console.log(token);
     console.log(addresses);
+    if(token.id) {
+      localStorage.removeItem('itemsInCart');
+      this.setState({
+        cart: []
+      });
+      this.props.clearTotal();
+    }
     // TODO: Send the token information and any other
     // relevant information to your payment process
     // server, wait for the response, and update the UI
