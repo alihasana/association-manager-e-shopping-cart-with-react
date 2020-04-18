@@ -39,13 +39,26 @@ class Dashboard extends Component {
         let url =
             "https://res.cloudinary.com/sivadass/raw/upload/v1535817394/json/products.json";
         axios.get(url).then(response => {
+            console.log(response.data);
             this.setState({
                 products: response.data
             });
         });
     }
+
+    updateCart () {
+        let itemsInCart = localStorage.getItem('itemsInCart');
+        if (itemsInCart) {
+            this.setState({
+                cart: JSON.parse(itemsInCart)
+            });
+            this.sumTotalItems(JSON.parse(itemsInCart));
+            this.sumTotalAmount(JSON.parse(itemsInCart));
+        }
+    }
     componentWillMount() {
         this.getProducts();
+        this.updateCart();
     }
 
     // Search by Keyword
@@ -98,6 +111,7 @@ class Dashboard extends Component {
         this.setState({
             cart: cart
         });
+        localStorage.setItem('itemsInCart', JSON.stringify(cart));
         this.sumTotalItems(this.state.cart);
         this.sumTotalAmount(this.state.cart);
         e.preventDefault();
@@ -108,15 +122,13 @@ class Dashboard extends Component {
             return item.id === productID;
         });
     }
-    sumTotalItems() {
-        let cart = this.state.cart;
+    sumTotalItems(cart) {
         this.setState({
             totalItems: cart.length
         });
     }
-    sumTotalAmount() {
+    sumTotalAmount(cart) {
         let total = 0;
-        let cart = this.state.cart;
         for (let i = 0; i < cart.length; i++) {
             total += cart[i].price * parseInt(cart[i].quantity);
         }

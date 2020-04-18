@@ -215,7 +215,7 @@ class Header extends Component {
                 <StripeCheckout
                     stripeKey={process.env.PUBLISHABLE_KEY}
                     token={this.onToken}
-                    amount='5000'
+                    amount={Number(this.props.total * 100)}
                     currency="EUR"
                     billingAddress
                     shippingAddress
