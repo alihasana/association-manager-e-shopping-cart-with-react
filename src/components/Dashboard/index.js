@@ -33,19 +33,33 @@ class Dashboard extends Component {
         this.handleRemoveProduct = this.handleRemoveProduct.bind(this);
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
+        this.clearTotal = this.clearTotal.bind(this);
     }
     // Fetch Initial Set of Products from external API
     getProducts() {
         let url =
             "https://res.cloudinary.com/sivadass/raw/upload/v1535817394/json/products.json";
         axios.get(url).then(response => {
+            console.log(response.data);
             this.setState({
                 products: response.data
             });
         });
     }
+
+    updateCart () {
+        let itemsInCart = localStorage.getItem('itemsInCart');
+        if (itemsInCart) {
+            this.setState({
+                cart: JSON.parse(itemsInCart)
+            });
+            this.sumTotalItems(JSON.parse(itemsInCart));
+            this.sumTotalAmount(JSON.parse(itemsInCart));
+        }
+    }
     componentWillMount() {
         this.getProducts();
+        this.updateCart();
     }
 
     // Search by Keyword
@@ -98,6 +112,7 @@ class Dashboard extends Component {
         this.setState({
             cart: cart
         });
+        localStorage.setItem('itemsInCart', JSON.stringify(cart));
         this.sumTotalItems(this.state.cart);
         this.sumTotalAmount(this.state.cart);
         e.preventDefault();
@@ -108,15 +123,13 @@ class Dashboard extends Component {
             return item.id === productID;
         });
     }
-    sumTotalItems() {
-        let cart = this.state.cart;
+    sumTotalItems(cart) {
         this.setState({
             totalItems: cart.length
         });
     }
-    sumTotalAmount() {
+    sumTotalAmount(cart) {
         let total = 0;
-        let cart = this.state.cart;
         for (let i = 0; i < cart.length; i++) {
             total += cart[i].price * parseInt(cart[i].quantity);
         }
@@ -145,6 +158,13 @@ class Dashboard extends Component {
             modalActive: false
         });
     }
+    // Clear No. of item and total
+    clearTotal() {
+        this.setState( {
+            totalItems: 0,
+            totalAmount: 0
+        })
+    }
 
     render() {
         return (
@@ -154,6 +174,7 @@ class Dashboard extends Component {
                     total={this.state.totalAmount}
                     totalItems={this.state.totalItems}
                     cartItems={this.state.cart}
+                    clearTotal={this.clearTotal}
                     removeProduct={this.handleRemoveProduct}
                     handleSearch={this.handleSearch}
                     handleMobileSearch={this.handleMobileSearch}
