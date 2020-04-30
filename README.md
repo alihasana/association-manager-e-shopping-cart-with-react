@@ -1,4 +1,4 @@
-# Shopping carte for association manager
+# Shopping cart for association manager
 
 ## Setup
 
