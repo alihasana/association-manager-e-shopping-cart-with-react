@@ -68,28 +68,20 @@ class Header extends Component {
     );
   }
 
-  onToken = (token, addresses) => {
-    console.log(this.state.cart)
-    console.log(token);
-    console.log(this.props.total);
-    console.log(addresses);
+  onToken = async (token, addresses) => {
     if(token.id) {
       let query = `
           mutation {
             payment(
                 description: "qsdfqs",
                 source: "${token.id}",
-                amount: 42.15
-              )};
-          `
-      console.log(query);
-      axios({
-        url: 'http://localhost:4000/graphql',
-        method: 'post',
-        data: {query}
-      })
-          .then(res => console.log(res))
-          .catch(err =>console.log(err));
+                amount: ${this.props.total}
+              )}
+          `;
+     let request = axios.post(
+         'http://localhost:4000/graphql',
+         {query: query})
+      await request.then(res => console.log(res)).catch(err =>console.log(err));
       localStorage.removeItem('itemsInCart');
       this.setState({
         cart: []
