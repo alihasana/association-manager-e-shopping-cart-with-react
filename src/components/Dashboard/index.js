@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import Header from "./Header";
 import Products from "./Products";
 import Footer from "./Footer";
@@ -37,13 +36,16 @@ class Dashboard extends Component {
         this.clearTotal = this.clearTotal.bind(this);
     }
     // Fetch Initial Set of Products from external API
-    getProducts() {
-        let url =
-            "https://res.cloudinary.com/sivadass/raw/upload/v1535817394/json/products.json";
-        axios.get(url).then(response => {
-            console.log(response.data);
-            this.setState({
-                products: response.data
+    getProducts = () => {
+        let query = ` query {
+        products {
+        id,name, description, mainImageUrl, mainThumbnailUrl, images, price, vat, associationId, createdAt
+        }}`;
+         api.post('', {query}).then(
+             response => {
+            console.log(response.data.data.products);
+             this.setState({
+                products: response.data.data.products
             });
         });
     }

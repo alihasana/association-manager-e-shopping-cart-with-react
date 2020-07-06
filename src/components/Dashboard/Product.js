@@ -10,14 +10,11 @@ class Product extends Component {
     };
   }
 
-  quickView(image, name, price, id) {
+  quickView(images, name, price, id) {
     this.setState(
       {
         quickViewProduct: {
-          image: image,
-          name: name,
-          price: price,
-          id: id
+          images, name, price, id
         }
       },
       function() {
@@ -27,6 +24,7 @@ class Product extends Component {
   }
   render() {
     let image = this.props.image;
+    let images = this.props.images;
     let name = this.props.name;
     let price = this.props.price;
     let id = this.props.id;
@@ -39,7 +37,7 @@ class Product extends Component {
             alt={this.props.name}
             onClick={this.quickView.bind(
               this,
-              image,
+              images,
               name,
               price,
               id,

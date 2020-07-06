@@ -10,12 +10,24 @@ class QuickView extends Component {
   render() {
     let image = this.props.product.image,
         name = this.props.product.name,
+        images = this.props.product.images,
         price = this.props.product.price,
         id = this.props.product.id,
         quantity = this.props.productQuantity,
         show = this.props.modalActive,
         hide = this.props.closeModal,
         addToCart = this.props.addToCart;
+
+    let carouselItem = (imgs) => {
+      console.log(Object.keys(this.props.product).length)
+      if(Object.keys(this.props.product).length !== 0) {
+       return imgs.map(img => (
+            <Carousel.Item key={img.split('&token=')[1]}>
+              <img src={img} alt={ name + ' and other images' } />
+            </Carousel.Item>
+        ))
+      }
+    }
     return (
       <Modal
         show={show}
@@ -30,15 +42,7 @@ class QuickView extends Component {
         </Modal.Header>
         <Modal.Body>
           <Carousel>
-            <Carousel.Item>
-              <img src={image} alt={name} />
-            </Carousel.Item>
-            <Carousel.Item>
-              <img src={image} alt={name} />
-            </Carousel.Item>
-            <Carousel.Item>
-              <img src={image} alt={name} />
-            </Carousel.Item>
+            {(Object.keys(this.props.product).length !== 0) ? carouselItem(images, id): '' }
           </Carousel>
           <div className="quick-view-details">
               <span className="product-name">{name}</span>

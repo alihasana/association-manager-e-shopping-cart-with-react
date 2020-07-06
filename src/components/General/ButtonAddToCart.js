@@ -17,13 +17,7 @@ class ButtonAddToCart extends Component {
 
     addToCart(image, name, price, id, quantity) {
         this.setState({
-                selectedProduct: {
-                    image: image,
-                    name: name,
-                    price: price,
-                    id: id,
-                    quantity: quantity
-                }
+                selectedProduct: {image, name, price, id, quantity}
             },
             function () {
                 let data = this;
