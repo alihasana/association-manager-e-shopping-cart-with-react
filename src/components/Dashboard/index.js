@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import QuickView from "./QuickView";
 import "../../scss/style.scss";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import api from '../../utils/api'
 
 class Dashboard extends Component {
     constructor() {

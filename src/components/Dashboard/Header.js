@@ -4,7 +4,7 @@ import EmptyCart from "../../empty-states/EmptyCart";
 import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
 import { findDOMNode } from "react-dom";
 import StripeCheckout from 'react-stripe-checkout';
-import axios from 'axios';
+import api from '../../utils/api'
 
 class Header extends Component {
   constructor(props) {
@@ -78,8 +78,8 @@ class Header extends Component {
                 amount: ${this.props.total}
               )}
           `;
-     let request = axios.post(
-         'http://localhost:4000/graphql',
+     let request = api.post(
+         '',
          {query: query})
       await request.then(res => console.log(res)).catch(err =>console.log(err));
       localStorage.removeItem('itemsInCart');
@@ -231,7 +231,7 @@ class Header extends Component {
                 </button>*/}
 
                 <StripeCheckout
-                    stripeKey={process.env.PUBLISHABLE_KEY}
+                    stripeKey={process.env.STRIPE_PUBLISHABLE_KEY}
                     token={this.onToken}
                     amount={Number(this.props.total * 100)}
                     currency="EUR"
