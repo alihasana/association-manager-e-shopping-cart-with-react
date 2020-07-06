@@ -4,6 +4,7 @@ import EmptyCart from "../../empty-states/EmptyCart";
 import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
 import { findDOMNode } from "react-dom";
 import StripeCheckout from 'react-stripe-checkout';
+import axios from 'axios';
 
 class Header extends Component {
   constructor(props) {
@@ -68,9 +69,27 @@ class Header extends Component {
   }
 
   onToken = (token, addresses) => {
+    console.log(this.state.cart)
     console.log(token);
+    console.log(this.props.total);
     console.log(addresses);
     if(token.id) {
+      let query = `
+          mutation {
+            payment(
+                description: "qsdfqs",
+                source: "${token.id}",
+                amount: 42.15
+              )};
+          `
+      console.log(query);
+      axios({
+        url: 'http://localhost:4000/graphql',
+        method: 'post',
+        data: {query}
+      })
+          .then(res => console.log(res))
+          .catch(err =>console.log(err));
       localStorage.removeItem('itemsInCart');
       this.setState({
         cart: []
