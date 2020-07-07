@@ -137,7 +137,7 @@ class Dashboard extends Component {
             total += cart[i].price * parseInt(cart[i].quantity);
         }
         this.setState({
-            totalAmount: total
+            totalAmount: Number(total).toFixed(2)
         });
     }
 

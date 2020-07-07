@@ -26,7 +26,7 @@ class Product extends Component {
     let image = this.props.image;
     let images = this.props.images;
     let name = this.props.name;
-    let price = this.props.price;
+    let price = Number(this.props.price).toFixed(2);
     let id = this.props.id;
     let quantity = this.props.productQuantity;
     return (

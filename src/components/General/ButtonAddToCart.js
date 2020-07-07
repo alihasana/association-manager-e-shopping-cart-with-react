@@ -69,7 +69,7 @@ class ButtonAddToCart extends Component {
         let data = this,
             image = data.props.image,
             name = data.props.name,
-            price = data.props.price,
+            price = Number(data.props.price).toFixed(2),
             id = data.props.id,
             quantity = data.props.productQuantity;
         return (
