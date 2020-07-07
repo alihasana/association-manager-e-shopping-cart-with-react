@@ -19,3 +19,6 @@ yarn.lock
 
 # Misc
 .DS_Store
+
+# Envirnmental variable
+.env
