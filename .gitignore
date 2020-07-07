@@ -12,6 +12,7 @@
 
 # Node Modules
 node_modules/
+yarn.lock
 
 # JS Mapping files
 *.js.map
