@@ -22,3 +22,6 @@ yarn.lock
 
 # Envirnmental variable
 .env
+
+# build files
+docs
