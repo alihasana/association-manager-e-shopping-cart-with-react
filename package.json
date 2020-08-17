@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "association_manager_shopping_cart",
   "main": "main.js",
+  "engines": {
+    "node": "13.14.x",
+    "npm": "6.14.x"
+  },
   "scripts": {
     "start": "webpack-dev-server --config=config/webpack.dev.js",
     "build": "NODE_ENV=production webpack --config=config/webpack.prod.js",
