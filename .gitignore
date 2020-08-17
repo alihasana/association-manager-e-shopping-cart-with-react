@@ -24,5 +24,3 @@ package-lock.json
 # Envirnmental variable
 .env
 
-# build files
-docs/*
