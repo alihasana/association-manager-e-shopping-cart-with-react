@@ -13,6 +13,7 @@
 # Node Modules
 node_modules/
 yarn.lock
+package-lock.json
 
 # JS Mapping files
 *.js.map
@@ -24,4 +25,4 @@ yarn.lock
 .env
 
 # build files
-docs
+docs/*
